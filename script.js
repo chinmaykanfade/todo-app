@@ -8,9 +8,17 @@ let li=document.createElement("li");
 button.onclick=function(){
     li.remove();
 }
+let donebutton=document.createElement("button");
+donebutton.textContent="✅";
+donebutton.onclick=function(){
+    li.textContent.style.textDecoration="line-through";
+    li.textContent.style.opacity="0.6"
+}
+
 let textNode = document.createTextNode(task);
 li.appendChild(textNode);
-li.appendChild(button);  // add button next to the text
+li.appendChild(button);  
+li.appendChild(donebutton);
 
 
  

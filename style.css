@@ -1,3 +1,43 @@
 body{
-    background: color #f4f4f4;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    background: color hsl(0, 14%, 90%);
+    padding: 20px;
+    
+}
+h1{
+    text-align: center;
+    color:#333;
+}
+input{
+    font-size: 16px;
+    width: 60%;
+    padding: 10px;
+}
+button{
+    padding: 10px,15px;
+    font-size: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+li{
+    background: white;
+    margin: 10px 0;
+    padding: 10px;
+    border-left: 4px,solid #007bff;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+li button{
+    background-color: red;
+    color: white;
+    padding: 5px,10px;
+    border: none;
+    cursor:pointer;
 }
