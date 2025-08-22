@@ -2,10 +2,19 @@ console.log("script is connected");
 
  function addTask(){
 let task=document.getElementById("taskInput").value;
+let date=document.getElementById("dateinput").value;
 let li=document.createElement("li");
+li.classList.add("new-task");
 let editbtn=document.createElement("button");
 editbtn.classList.add("edit-btn");
 editbtn.textContent=" ✏️";
+if(date){
+    let datespan=document.createElement("span");
+    datespan.textContent="(Due: " +date+ " )";
+    datespan.classList.add("Due-date");
+    span.appendChild(datespan);
+}
+li.appendChild(datespan);
 
 
 editbtn.onclick=function(){
@@ -69,8 +78,13 @@ editbtn.onclick=function(){
  deletebutton.classList.add("del-btn");
  
 deletebutton.onclick=function(){
-    li.remove();
-}
+    
+    li.classList.add("removing");
+    setTimeout(()=>li.remove(),300);
+};
+setTimeout(() => {
+    li.classList.add("show")
+}, 10);
 let donebutton=document.createElement("button");
 donebutton.textContent="✅";
 donebutton.classList.add("done-btn");
@@ -91,4 +105,5 @@ donebutton.innerHTML="<span class='tick'>✅</span>"
  
 document.getElementById("taskList").appendChild(li);
 document.getElementById("taskInput").value="";
+document.getElementById("dateinput").value="";
 } 

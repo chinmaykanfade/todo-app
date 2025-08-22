@@ -45,7 +45,7 @@ ul{
     padding: 0;
 }
 @keyframes fadein{
-    from { opacity: 0; transform: translateY(-5px); }
+    from { opacity: 1; transform: translateY(-5px); }
     to { opacity: 1; transform: translateY(0); }
 
 }
@@ -60,11 +60,28 @@ li{
     justify-content:space-between;
     align-items: center;
     font-family: 'Segoe UI', sans-serif;
+    
+    
+    opacity: 1;
+    transform: translateY(0);
     transition: all 0.3s ease;
-    animation: fadein 0.3s ease-in-out;
 }
+li.new-task{
+    opacity: 1;
+    transform: translateY(-10px);
+    animation: fadeSlideIn 0.3s forwards;
+}
+li.removing{
+    opacity: 1;
+    transform: translateY(10px);
 
-
+}
+@keyframes fadeSlideIn{
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 li:hover{
     background: rgba(255,255,255,0.95);
@@ -83,6 +100,9 @@ li button{
     align-items: center;
     gap:10px ;
     margin: 10px 0s;
+    opacity: 1;
+    
+    transition: opacity 0.3s ease,transform 0.3s ease;
     
 }
 .task-text{
@@ -163,4 +183,30 @@ fieldset{
     box-shadow: 0 4px 10px rgba(0,0,0,0.35);
     width: 250px;
 
+}
+#taskInput:focus{
+    border-color: rgba(255,215,0,0.8);
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+
+}
+button{
+    padding: 10px 15px;
+    background: (255,215,0,0.8);
+    color: black;
+    border: none;
+    border-radius: 8px;
+    
+}
+.b1:hover{
+    transform: translateY(-2px);
+    background: linear-gradient(45deg,#4288c5,#05335a);
+     box-shadow:0px 6px 15px rgba(0, 0, 0, 0.3) ;
+
+}
+.Due-date{
+    font-size: 0.8rem;
+    color: #555;
+    margin-left: 8px;
+    font-style: italic;
 }
