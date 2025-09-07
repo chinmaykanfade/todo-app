@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot Wheels - Track Master</title>
+    <style>
+        /* --- Google Fonts for Typography --- */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Montserrat:wght@400;700&display=swap');
+
+        /* --- CSS Variables for Consistent Styling --- */
+        :root {
+            --hotwheels-red: #E21B32;
+            --hotwheels-orange: #FF6600;
+            --hotwheels-black: #1A1A1A;
+            --hotwheels-dark-gray: #222222;
+            --hotwheels-white: #FFFFFF;
+            --hotwheels-gray: #CCCCCC;
+        }
+
+        /* --- Global Reset & Body Styling --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--hotwheels-dark-gray);
+            color: var(--hotwheels-white);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background-color: var(--hotwheels-black);
+            padding: 1.5rem 0;
+            position: relative;
+            z-index: 100;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 2.5rem;
+            color: var(--hotwheels-red);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--hotwheels-white);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--hotwheels-orange);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1542362567-b5bb2f69e96f?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+            background-attachment: fixed;
+            border-bottom: 5px solid var(--hotwheels-red);
+        }
+
+        .hero-content h1 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            margin-bottom: 1rem;
+            color: var(--hotwheels-white);
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--hotwheels-gray);
+        }
+
+        /* --- Main Content Section --- */
+        .content-section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            color: var(--hotwheels-red);
+        }
+
+        /* --- Product Grid & "Pit Stop" Cards --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--hotwheels-black);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--hotwheels-orange);
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        .product-info p {
+            font-size: 0.9rem;
+            color: var(--hotwheels-gray);
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background-color: var(--hotwheels-red);
+            color: var(--hotwheels-white);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--hotwheels-orange);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--hotwheels-black);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--hotwheels-white);
+            border-top: 5px solid var(--hotwheels-red);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-link a {
+            color: var(--hotwheels-white);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link a:hover {
+            color: var(--hotwheels-orange);
+        }
+
+        .social-icons {
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon a {
+            color: var(--hotwheels-white);
+            transition: color 0.3s ease;
+        }
+
+        .social-icon a:hover {
+            color: var(--hotwheels-red);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-bar">
+            <div class="logo">Hot Wheels</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#new-arrivals" class="nav-link">New Arrivals</a></li>
+                    <li><a href="#track-builder" class="nav-link">Track Builder</a></li>
+                    <li><a href="#" class="nav-link">Shop</a></li>
+                    <li><a href="#" class="nav-link">Community</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>The World's Fastest</h1>
+                <p>Explore a new dimension of speed, design, and performance with our latest collections.</p>
+            </div>
+        </section>
+
+        <section id="new-arrivals" class="content-section">
+            <div class="container">
+                <h2 class="section-title">New Arrivals</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1542362567-b5bb2f69e96f?auto=format&fit=crop&w=600&q=80" alt="Hot Wheels Car 1">
+                        <div class="product-info">
+                            <h3>GT-R Track Pack</h3>
+                            <p>An exclusive collection for the most demanding racing enthusiasts.</p>
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1542289659-42b78a9c2794?auto=format&fit=crop&w=600&q=80" alt="Hot Wheels Car 2">
+                        <div class="product-info">
+                            <h3>Street Racing Icons</h3>
+                            <p>Relive the thrill of the most iconic street racing legends.</p>
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1594801115166-d3c267c7423e?auto=format&fit=crop&w=600&q=80" alt="Hot Wheels Car 3">
+                        <div class="product-info">
+                            <h3>Monster Trucks 2025</h3>
+                            <p>Bigger, bolder, and more destructive than ever before.</p>
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="track-builder" class="content-section" style="background-color: var(--hotwheels-black);">
+            <div class="container">
+                <h2 class="section-title">Design Your Track</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1555523996-3b320364d952?auto=format&fit=crop&w=600&q=80" alt="Track Builder Set 1">
+                        <div class="product-info">
+                            <h3>Ultimate Loop Builder</h3>
+                            <p>Create gravity-defying loops and high-speed turns.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1629555726224-b1f41b95b86b?auto=format&fit=crop&w=600&q=80" alt="Track Builder Set 2">
+                        <div class="product-info">
+                            <h3>Stunt Jump Challenge</h3>
+                            <p>Build the perfect jump and land the impossible stunt.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1542362567-b5bb2f69e96f?auto=format&fit=crop&w=600&q=80" alt="Track Builder Set 3">
+                        <div class="product-info">
+                            <h3>Mega Garage Playset</h3>
+                            <p>Store your entire collection and launch them onto the track.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <ul class="footer-links">
+                <li class="footer-link"><a href="#">Privacy Policy</a></li>
+                <li class="footer-link"><a href="#">Terms of Use</a></li>
+                <li class="footer-link"><a href="#">Contact Us</a></li>
+                <li class="footer-link"><a href="#">Store Locator</a></li>
+            </ul>
+            <p>&copy; 2025 Mattel. Hot Wheels and associated trademarks and trade dress are owned by, and used under license from, Mattel. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

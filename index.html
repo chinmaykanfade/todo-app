@@ -3,15 +3,34 @@
 <head>
   <title>To-Do List</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
+
+  
 <body><legend>
+  <div class="wel"><i class="fa-solid fa-list-check"></i> Welcome to Your To-Do List</div>
   <div class="container">
-    <h1>My To-Do List</h1>
+    <h1><i class="fa-solid fa-clipboard-list"></i> My To-Do List</h1>
+    <button id="darkModeToggle" class="dark-toggle">Toggle Dark Mode</button>
     <div class="input-container">
-    <input type="text" id="taskInput" placeholder="Add a new task" />
-    <input type="date" id="dateinput">
-    <button onclick="addTask()" class="b1">Add Task</button>
+      <input type="text" id="taskInput" placeholder="Add a new task" />
+      <input type="date" id="dateinput" />
+      <select id="priority" required>
+        <option value="" disabled selected>Select priority</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+      <button onclick="addTask()" class="b1"><i class="fa-solid fa-plus"></i> Add Task</button>
     </div>
+    <div class="filter-container">
+      <button onclick="filterTask('all')"><i class="fa-solid fa-list"></i> All</button>
+      <button onclick="filterTask('High')"><i class="fa-solid fa-arrow-up"></i> High</button>
+      <button onclick="filterTask('Medium')"><i class="fa-solid fa-arrow-right"></i> Medium</button>
+      <button onclick="filterTask('Low')"><i class="fa-solid fa-arrow-down"></i> Low</button>
+    </div>
+
     <ul id="taskList"></ul>
   </div>
   </legend>
